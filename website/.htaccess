@@ -1,0 +1,85 @@
+AddType image/x-icon .ico
+AddType application/relax-ng-compact-syntax .rnc
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(ico|gif|jpg|jpeg|png|js|css|)$">
+        Header set Cache-Control "max-age=86400"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/gif A86400
+    ExpiresByType image/png A86400
+    ExpiresByType image/jpeg A86400
+    ExpiresByType image/x-icon A86400
+    ExpiresByType application/json A86400
+    ExpiresByType application/javascript A86400
+    ExpiresByType application/x-javascript A86400
+    ExpiresByType text/css A86400
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^about/credits\.htm         /about/credits/       [R=301,NC,L]
+    RewriteRule ^about/datasheets\.htm      /about/               [R=301,NC,L]
+    RewriteRule ^about/feature2\.htm        /about/               [R=301,NC,L]
+    RewriteRule ^about/index\.htm           /about/               [R=301,NC,L]
+    RewriteRule ^about/whychoos\.htm        /about/               [R=301,NC,L]
+    RewriteRule ^about/history\.htm         /about/history/       [R=301,NC,L]
+    RewriteRule ^about/i18n\.php            /about/translations/  [R=301,NC,L]
+    RewriteRule ^about/licence\.htm         /about/licence/       [R=301,NC,L]
+    RewriteRule ^about/newlicen\.htm        /about/licence/       [R=301,NC,L]
+    RewriteRule ^about/lic_doc\.txt         /about/licence/       [R=301,NC,L]
+    RewriteRule ^about/license(1|2|3)\.txt  /about/licence/       [R=301,NC,L]
+    RewriteRule ^about/preamble\.txt        /about/licence/       [R=301,NC,L]
+    RewriteRule ^about/name\.htm            /about/name-change/   [R=301,NC,L]
+    RewriteRule ^about/screen(.*)+\.htm     /about/screenshots/   [R=301,NC,L]
+    RewriteRule ^about/whowhat\.htm         /about/team/          [R=301,NC,L]
+
+    RewriteRule ^about/news/news\.htm       /news/archive/        [R=301,NC,L]
+
+    RewriteRule ^book/(.*)                  /docs/book/           [R=301,NC,L]
+    RewriteRule ^docs/book/index\.htm       /docs/book/           [R=301,NC,L]
+    RewriteRule ^docs/book/errata\.htm      /docs/book/errata/    [R=301,NC,L]
+    RewriteRule ^docs/tutorials\.htm        /docs/tutorials/      [R=301,NC,L]
+
+    RewriteRule ^docs/access\.htm             /docs/tutorials/accessibility/       [R=301,NC,L]
+    RewriteRule ^docs/tutorials/access\.htm   /docs/tutorials/accessibility/       [R=301,NC,L]
+    RewriteRule ^docs/tutorials/help\.htm     /docs/tutorials/writing-online-help/ [R=301,NC,L]
+    RewriteRule ^docs/technote/install\.htm   /docs/tutorials/building-installers/ [R=301,NC,L]
+    RewriteRule ^docs/technote/accesskey\.htm /docs/tutorials/using-mnemonics/     [R=301,NC,L]
+
+    RewriteRule ^docs/faq\.htm     /docs/faq/          [R=301,NC,L]
+    RewriteRule ^docs/faqcmn\.htm  /docs/faq/common/   [R=301,NC,L]
+    RewriteRule ^docs/faqgen\.htm  /docs/faq/general/  [R=301,NC,L]
+    RewriteRule ^docs/faqgtk\.htm  /docs/faq/gtk/      [R=301,NC,L]
+    RewriteRule ^docs/faqmac\.htm  /docs/faq/osx/      [R=301,NC,L]
+    RewriteRule ^docs/faqmot\.htm  /docs/faq/motif/    [R=301,NC,L]
+    RewriteRule ^docs/faqmsw\.htm  /docs/faq/windows/  [R=301,NC,L]
+    RewriteRule ^docs/faqunx\.htm  /docs/faq/common/   [R=301,NC,L]
+    RewriteRule ^docs/faqx11\.htm  /docs/faq/x11/      [R=301,NC,L]
+
+    RewriteRule ^docs/platform\.htm        https://wiki.wxwidgets.org/Supported_Platforms             [R=301,NC,L]
+    RewriteRule ^docs/supported\.htm       https://wiki.wxwidgets.org/Development:_Supported_Classes  [R=301,NC,L]
+    RewriteRule ^docs/technote/vc_ide\.htm https://wiki.wxwidgets.org/Microsoft_Visual_C%2B%2B_Guide  [R=301,NC,L]
+    RewriteRule ^develop/roadmap\.htm      https://trac.wxwidgets.org/wiki/Roadmap                    [R=301,NC,L]
+
+    RewriteRule ^downloads/builds\.htm  /develop/                    [R=301,NC,L]
+    RewriteRule ^develop/standard\.htm  /develop/coding-guidelines/  [R=301,NC,L]
+    RewriteRule ^develop/svn\.htm       /develop/code-repository/    [R=301,NC,L]
+
+    RewriteRule ^support/$               /support/mailing-lists/        [R=301,NC,L]
+    RewriteRule ^support/index\.html     /support/mailing-lists/        [R=301,NC,L]
+    RewriteRule ^support/maillst2\.htm   /support/mailing-lists/        [R=301,NC,L]
+    RewriteRule ^support/mlhowto\.htm    /support/mailing-lists/guide/  [R=301,NC,L]
+    RewriteRule ^support/support\.htm    /support/commercial/           [R=301,NC,L]
+
+    RewriteRule ^manuals/(.*)$         https://docs.wxwidgets.org/$1  [R=301,NC,L]
+    RewriteRule ^wiki/index.php/(.*)$  https://wiki.wxwidgets.org/$1  [R=301,NC,L]
+    RewriteRule ^wiki/(.*)$            https://wiki.wxwidgets.org/$1  [R=301,NC,L]
+
+    RewriteRule ^wxxrc$       /schemas/xrc_schema.rnc              [R=302,L]
+    RewriteRule ^wxxrc_std$   /schemas/xrc_schema_builtin_only.rnc [R=302,L]
+</IfModule>

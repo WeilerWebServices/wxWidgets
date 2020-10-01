@@ -1,0 +1,51 @@
+# Jekyll Site Generator Settings
+
+url: https://www.wxwidgets.org
+permalink: /news/:year/:month/:title/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: blog
+    values:
+      layout: post
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+collections:
+  blog:
+    output: true
+    permalink: /blog/:year/:month/:title/
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - new_blog
+  - new_post
+  - node_modules
+  - package.json
+  - README.md
+  - tags
+  - tags.lock
+  - tags.temp
+  - Vagrantfile
+  - vendor
+  - yarn.lock
+
+# Custom Settings
+
+disqus_shortname: wxwidgets
